@@ -1,0 +1,22 @@
+{
+  "nplThresholdPct": 5.0,
+  "carMinimumPct": 10.0,
+  "carRiskAddOnPct": 2.5,
+  "cet1MinimumPct": 10.5,
+  "liquidityRatioMinimumPct": 30.0,
+  "lcrMinimumPct": 100.0,
+  "singleObligorLimitPctOfFunds": 20.0,
+  "insiderSingleObligorLimitPctOfFunds": 5.0,
+  "nplDriftBreachPct": 5.0,
+  "nplDriftRisePp90d": 1.0,
+  "stage2RisePp6m": 1.5,
+  "stage2CorLagPp": 0.5,
+  "nimCompressionPp6m": 0.4,
+  "capitalBreachHorizonMonths": 18,
+  "fundingTermShiftPp12m": 5.0,
+  "fundingTotalDriftPct": 2.0,
+  "concentrationTop10RisePp90d": 3.0,
+  "singleObligorApproachPctOfLimit": 90.0,
+  "depositTotalConcept": "liquidity.deposit_total",
+  "top10ObligorAppetitePct": 40.0
+}
