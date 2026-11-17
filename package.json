@@ -1,0 +1,38 @@
+{
+  "name": "semabi",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SemaBI - AI Banking Insight Engine on top of Power BI certified semantic models (commercial banking, Nigeria / CBN prudential)",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "node --test tests/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "seed:demo": "node lib/demo/bootstrap.ts"
+  },
+  "dependencies": {
+    "@azure/msal-node": "^2.16.2",
+    "bullmq": "^5.34.0",
+    "ioredis": "^5.4.2",
+    "next": "^14.2.21",
+    "next-auth": "^5.0.0-beta.25",
+    "pg": "^8.13.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.15.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/pg": "^8.11.10",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}

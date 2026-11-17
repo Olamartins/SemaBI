@@ -1,0 +1,48 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      SEMABI_MODE: prod
+      DATABASE_URL: postgres://semabi:semabi@postgres:5432/semabi
+      REDIS_URL: redis://redis:6379
+      INGEST_SCHEDULE: "05:30"
+      DIGEST_SCHEDULE: "07:00"
+      AGGREGATE_RETENTION_MONTHS: "24"
+      # AZURE_AD_* / PBI_SP_* / MISTRAL_API_KEY / RESEND_API_KEY / TEAMS_WEBHOOK_URL via .env
+    env_file:
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    restart: unless-stopped
+
+  postgres:
+    image: timescale/timescaledb-ha:pg16
+    environment:
+      POSTGRES_USER: semabi
+      POSTGRES_PASSWORD: semabi
+      POSTGRES_DB: semabi
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/migrations:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U semabi"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redisdata:/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  redisdata:
